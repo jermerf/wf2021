@@ -1,0 +1,178 @@
+table#examples td:nth-child(2){
+  min-width: 250px;
+  max-width: 300px;
+}
+
+#color{
+  color: fuchsia;
+}
+#background{
+  background-image: url('kittens.jpg');
+}
+
+#background-scale{
+  width: 200px;
+  height: 150px;
+  background-image: url('kittens.jpg');
+  background-size: cover;
+  background-position-x: -42px;
+}
+#min-width{
+  display: inline-block;
+  min-width: 70px;
+}
+#max-width{
+  display: inline-block;
+  max-width: 70px;
+}
+#overflow{
+  overflow-x: hidden;
+  /* No Text wrap */
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+#padding-margin{
+  padding: 15px;
+  margin: 15px;
+}
+#borders{
+  border: 2px solid red;
+  /* border-width: 2px;
+  border-color: red;*/
+  /* border-style: double;  */
+  border-radius: 10px;
+}
+
+#border-radius{
+  border-radius: 15px;
+}
+#box-shadow1{
+  margin: 20px;
+  box-shadow: 11px 8px 11px red; 
+}
+#box-shadow2{
+  margin: 20px;
+  box-shadow: -2px -3px 14px black inset; 
+}
+#box-shadow3{
+  margin: 20px;
+  box-shadow: 11px 8px 11px #ff000077, 
+  -2px -3px 14px #00000099 inset,
+  -12px -13px 14px goldenrod; 
+}
+#font-sizing1 div{
+  font-size: 10px;
+}
+#font-sizing2 div{
+  font-size: 120%;
+}
+
+#font-sizing3 div{
+  font-size: 80%;
+}
+#font-sizing3 div img{
+  height: 2em;
+}
+
+
+#font-sizing4 div{
+  font-size: 80%;
+}
+#font-sizing4 div img{
+  height: 2rem;
+}
+
+span.fam{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+span.font-style{
+  font-style: italic;
+}
+span.heavy{
+  font-weight: bold;
+}
+
+#zee-index {
+  position: relative;
+  height: 120px;
+}
+#zee-index div{
+  padding: 10px;
+  color: white;
+  position: absolute;
+}
+#zee1{
+  background-color: indigo;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+}
+#zee2{
+  background-color: tomato;
+  top: 15px;
+  left: 15px;
+  z-index: 2;
+}
+#zee3{
+  background-color: sandybrown;
+  opacity: 0.75;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+}
+#zee4{
+  background-color: forestgreen;
+  top: 35px;
+  left: 35px;
+  z-index: 4;
+}
+#zee5{
+  background-color: navy;
+  top: 45px;
+  left: 45px;
+  z-index: 5;
+}
+
+#transitions{
+  /* transition: background-color 1s, padding 2s; */
+  transition: all 0.4s;
+}
+#transitions:hover{
+  background-color: blue;
+  padding: 35px;
+  margin: 10px;
+  transform: rotate(30deg);
+  font-size: 300%;
+}
+
+@keyframes spinner{
+  0%{transform: rotate(0deg); }
+  50%{transform: rotate(360deg); }
+  100%{transform: rotate(0deg); }
+}
+
+
+@keyframes mover{
+  0%{ left: 50%; top: 0%; }
+  33%{ left: 100%; top: 100%; 
+    transform: translate(-100%, -100%);
+  }
+  66%{ left: 0%; top: 100%; 
+  transform: translateY(-100%);}
+  100%{ left: 50%; top: 0%; }
+}
+
+#animations {
+  height: 75px;
+  position: relative;
+}
+#animations :first-child{
+  position: absolute;
+  animation: mover 3s infinite;
+}
+#animations :nth-child(2){
+  animation: spinner 3s infinite;
+}
