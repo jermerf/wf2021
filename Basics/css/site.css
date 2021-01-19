@@ -1,0 +1,50 @@
+body{
+  background-color: black;
+  color: white;
+}
+
+h2{
+  background-color: coral;
+}
+
+ul{
+  background-color: #333;
+}
+
+ol{
+  background-color: #343;
+}
+
+ul ol {
+  background-color: #686;
+}
+
+
+ol ul {
+  background-color: #777;
+}
+
+#punny{
+  border: 2px solid yellow;
+}
+
+.special {
+  border: 2px dashed pink;
+}
+
+ul .special {
+  border: 2px dashed maroon;
+}
+
+li {
+  background-color: orangered;
+  margin: 2px;
+  padding: 2px;
+}
+
+li .special {
+  background-color: yellow;
+}
+li.special {
+  font-size: 200%;
+}
