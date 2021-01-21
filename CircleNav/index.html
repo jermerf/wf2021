@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/circle.css">
+</head>
+
+<body>
+  <div class="headerrect headerrect1">
+    <div class="flexing">
+      <div class="circle">
+        <a href="#">Link Text</a>
+      </div>
+    </div>
+  </div>
+  <div class="headerrect headerrect2">
+    <div class="flexing">
+      <div class="circle">
+        <a href="#">Link Text</a>
+      </div>
+    </div>
+  </div>
+  <div class="headerrect headerrect3">
+    <div class="flexing">
+      <div class="circle">
+        <canvas id="navCanvas" width="1000" height="1000"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RECT_SIZE = 64
+    var can = document.getElementById('navCanvas')
+    var ctx = can.getContext('2d')
+    ctx.globalAlpha = 0.02
+    ctx.lineWidth = 25
+    ctx.lineCap = "round"
+    var lastPoint = null
+    var overlay = null
+
+    var loadingOverlay = new Image()
+    loadingOverlay.onload = () => overlay = loadingOverlay
+    loadingOverlay.src = "/img/CircleOverlay.png"
+
+
+    can.addEventListener('mousemove', ev => {
+      var coords = { x: ev.offsetX, y: ev.offsetY }
+      var rectSize = Math.random() * RECT_SIZE
+      ctx.save()
+      ctx.translate(coords.x, coords.y)
+      ctx.rotate(Math.PI * 2 * Math.random())
+      ctx.fillRect(-rectSize / 2, -rectSize / 2, rectSize, rectSize)
+      ctx.restore()
+      if (lastPoint) {
+        ctx.save()
+        ctx.strokeStyle = `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`
+        ctx.globalAlpha = 0.2
+        ctx.beginPath()
+        ctx.moveTo(lastPoint.x, lastPoint.y)
+        ctx.lineTo(coords.x, coords.y)
+        ctx.stroke()
+        ctx.restore()
+      }
+      lastPoint = coords
+    })
+
+    can.addEventListener('mouseleave', () => lastPoint = null)
+    can.addEventListener('mouseout', () => lastPoint = null)
+    setInterval(() => {
+      ctx.fillStyle = "#a66"
+      ctx.fillRect(0, 0, 1000, 1000)
+      ctx.fillStyle = "#533"
+      if (overlay) {
+        ctx.save()
+        ctx.globalAlpha = 1
+        ctx.drawImage(overlay, 0, 0)
+        ctx.restore()
+      }
+    }, 30)
+
+  </script>
+
+</body>
+
+</html>

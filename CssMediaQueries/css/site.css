@@ -1,0 +1,132 @@
+@font-face {
+  font-family: robo;
+  src: url("Roboto-Thin.ttf")
+}
+*{
+  color: #fffcf1;
+  font-family: robo,sans-serif;
+}
+
+html, body{
+  margin: 0;
+  background-color: #333;
+}
+
+header, footer{
+  text-align: center;
+  background-color: black;
+  padding: 5px;
+}
+header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+footer{
+  padding: 15px;
+}
+h1{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+}
+nav a {
+  color: #fffcf1;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+nav a:hover {
+  background-color: #234;
+}
+
+.social-media a img{
+  max-height: 2em;
+  transition: opacity 0.4s;
+}
+
+.social-media a img:hover {
+  opacity: 0.7;
+}
+
+
+nav .social-media {
+  display: none;
+}
+
+#flex-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+main{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+main > h3 {
+  padding-top: 95px;
+}
+main > *{
+  width: 100%;
+  max-width: 800px;
+}
+
+.cheeseburger{
+  background: url("/img/icons.png") -26px -15px;
+  width: 40px;
+  height: 40px;
+  display: none;
+  border: none;
+}
+
+@media only screen and (max-width: 732px){
+  main > h3{
+    padding-top: 115px;
+    /* background-color: #484; */
+  }
+  .cheeseburger{
+    display: inline-block;
+  }
+
+  #links{
+    display: none;
+  }
+  #links.visible{
+    display: block;
+  }
+
+  nav a{
+    display: block;
+    padding: 8px;
+  }
+  .social-media {
+    display: none;
+  }
+  
+  
+  nav .social-media {
+    display: block;
+  }
+  nav .social-media a{
+    display: inline-block;
+  }
+}
+@media only screen and (max-width: 456px){
+  main > h3{
+    padding-top: 155px;
+    /* background-color: #448; */
+  }
+
+}
+@media only screen and (max-width: 376px){
+  main > h3{
+    padding-top: 205px;
+    /* background-color: #844; */
+  }
+
+}
