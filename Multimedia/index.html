@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      color: white;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background-color: #444;
+    }
+
+    header {
+      padding: 5px;
+      background-color: #333;
+      text-align: center;
+    }
+
+    header a {
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: white;
+    }
+
+    header a:hover {
+      background-color: #aac;
+
+    }
+
+    canvas#snowstorm {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#" onclick="playSound()">Sound</a>
+  </header>
+  <video poster="/media/bunny.jpg" controls muted autoplay width="500">
+    <source src="/media/bbb.mp4" type="video/mp4">
+  </video>
+  <audio>
+    <source src="/media/purr.mp3" type="audio/mpeg">
+  </audio>
+  <canvas id="snowstorm"></canvas>
+  <script>
+    function playSound() {
+      let audioTag = document.querySelector('audio')
+      audioTag.currentTime = 0
+      audioTag.play()
+    }
+
+    var can = null
+    var pen = null
+    var w = window.innerWidth
+    var h = window.innerHeight
+    var snowflakeCount = 100
+    var snowSize = 1.5
+    var snowBaseFallSpeed = 1
+    var snowFallSpeedSpread = 1
+    var snowInterval = -1
+    var snowflakes = []
+
+    function startSnow() {
+      clearInterval(snowInterval)
+      can = document.getElementById('snowstorm')
+      w = window.innerWidth
+      h = window.innerHeight
+      can.width = w
+      can.height = h
+      pen = can.getContext('2d')
+      snowInterval = setInterval(drawSnow, 50)
+    }
+
+    function drawSnow() {
+      pen.clearRect(0, 0, w, h)
+      pen.fillStyle = "white"
+      for (flake of snowflakes) {
+        // Move
+        flake.x += flake.xRate
+        flake.y += flake.yRate
+        flake.thet += flake.thetRate
+        if (flake.y > h + snowSize) flake.y = - snowSize
+        if (flake.x < 0 - snowSize) {
+          flake.x = Math.random() * w
+          flake.y = - snowSize
+        }
+        if (flake.x > w + snowSize) {
+          flake.x = Math.random() * w
+          flake.y = - snowSize
+        }
+        // Draw
+        pen.save()
+        pen.translate(flake.x, flake.y)
+        pen.rotate(flake.thet)
+        pen.translate(-snowSize / 2, -snowSize / 2)
+        pen.fillRect(0, 0, snowSize, snowSize)
+        pen.restore()
+      }
+    }
+
+    function newFlake() {
+      let x = Math.random() * w
+      let y = Math.random() * h
+      let thet = Math.random() * 2 * Math.PI
+      let xRate = Math.random() * 1 - 0.5
+      let yRate = Math.random() * snowFallSpeedSpread + snowBaseFallSpeed
+      let thetRate = (Math.random() - 0.5) / 4
+      snowflakes.push({ x, y, thet, xRate, yRate, thetRate })
+    }
+
+    // Make snow flakes
+    for (var i = 0; i < snowflakeCount; i++) {
+      newFlake()
+    }
+    startSnow()
+    window.addEventListener('resize', startSnow)
+  </script>
+</body>
+
+</html>

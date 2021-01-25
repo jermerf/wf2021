@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form input {
+      display: block;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 10px;
+      margin-bottom: 200px;
+    }
+
+    td {
+      border: 1px solid grey;
+      padding: 4px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"
+    integrity="sha512-lOtDAY9KMT1WH9Fx6JSuZLHxjC8wmIBxsNFL6gJPaG7sLIVoSO9yCraWOwqLLX+txsOw0h2cHvcUJlJPvMlotw=="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Check Login</h1>
+  <form action="/auth" method="get">
+    <input type="submit" value="Login">
+  </form>
+
+  <h1>Login</h1>
+  <form action="/auth" method="post">
+    <input name="username" placeholder="Your Username">
+    <input name="password" placeholder="Secret Password" type="password">
+    <input type="submit" value="Login">
+  </form>
+
+  <h1>Register</h1>
+  <form action="/auth/register" method="post">
+    <input name="username" placeholder="Your Username">
+    <input name="password" placeholder="Secret Password" type="password">
+    <input type="submit" value="Register">
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <td>Type</td>
+        <td>Input</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Text</td>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>
+          <input type="password">
+        </td>
+      </tr>
+      <tr>
+        <td>Radio</td>
+        <td>
+          <div>
+            <input type="radio" name="gender" value="male">
+            <input type="radio" name="gender" value="female">
+          </div>
+          <div>
+            <!-- Labels match ids -->
+            <label for="tesla">Tesla</label>
+            <input id="tesla" type="radio" name="cat" value="tesla">
+
+            <!-- Or they must contain the referenced input -->
+            <label>
+              Edison
+              <input type="radio" name="cat" value="edison">
+            </label>
+            <label>
+              Kit
+              <input type="radio" name="cat" value="kit">
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Checkbox</td>
+        <td>
+          <label> Checkbox
+            <input type="Checkbox">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Image Submit</td>
+        <td>
+          <input type="image" src="catBtn.png" width="48">
+        </td>
+      </tr>
+      <tr>
+        <td>File</td>
+        <td>
+          <label> File
+            <input type="file">
+          </label>
+        </td>
+      </tr>
+      <!-- HTML5 Inputs -->
+
+      <tr>
+        <td>Color</td>
+        <td>
+          <label> Color
+            <input type="Color">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>date</td>
+        <td>
+          <label> date
+            <input type="date">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td>
+          <form>
+            <input type="email" required>
+            <input type="submit">
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>datetime-local</td>
+        <td>
+          <label> datetime-local
+            <input type="datetime-local">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>datetime</td>
+        <td>
+          <label> datetime
+            <input type="datetime">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Week</td>
+        <td>
+          <label> Week
+            <input type="Week">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Month</td>
+        <td>
+          <label> Month
+            <input type="Month">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>
+          <label> Number
+            <input type="Number">
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Text Area</td>
+        <td>
+          <label>Text Area
+            <textarea cols="15" rows="10"></textarea>
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Select</td>
+        <td>
+          <select>
+            <option value="danger">Edison</option>
+            <option value="warning">Tesla</option>
+            <option value="none">Kit</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
